@@ -4,7 +4,5 @@ services:
         build: ./nginx
         ports:
             - 8080:80
-        volumes:
-            - ./framework:/framework
-            - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
-        working_dir: /framework
+        privileged: true
+        command: /sbin/init
