@@ -9,7 +9,14 @@ RUN yum -y install nginx
 RUN systemctl enable nginx
 RUN mkdir -p /framework/www/html
 
+# rootのパスワードを変えたい
+RUN yum -y install passwd
+
+RUN yum -y install sudo
+
 # コンテナを動かすためのユーザー
 RUN useradd webuser
 RUN chown -R webuser:webuser /framework/
+RUN chmod 755 -R /etc/nginx/
+RUN chown -R webuser:webuser /etc/nginx/
 USER webuser
