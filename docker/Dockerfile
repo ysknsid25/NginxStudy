@@ -8,6 +8,7 @@ RUN yum -y update
 RUN yum -y install nginx
 RUN systemctl enable nginx
 RUN mkdir -p /framework/www/html
+RUN yum -y install logrotate
 
 # rootのパスワードを変えたい
 RUN yum -y install passwd
