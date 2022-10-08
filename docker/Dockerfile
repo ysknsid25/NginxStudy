@@ -12,12 +12,14 @@ RUN yum -y install logrotate
 
 # rootのパスワードを変えたい
 RUN yum -y install passwd
-
 RUN yum -y install sudo
 
+# Basic認証用のパスワード
+RUN yum -y install httpd-tools
+
 # コンテナを動かすためのユーザー
-#RUN useradd webuser && echo webuser:ysknsid25 | chpasswd
-#RUN chown -R webuser:webuser /framework/
-#RUN chmod 755 -R /etc/nginx/
-#RUN chown -R webuser:webuser /etc/nginx/
+RUN useradd webuser && echo webuser:ysknsid25 | chpasswd
+RUN chown -R webuser:webuser /framework/
+RUN chmod 755 -R /etc/nginx/
+RUN chown -R webuser:webuser /etc/nginx/
 #USER webuser
